@@ -22,6 +22,7 @@ body{
 }
 
 .header-container {
+    padding-right: 18px;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -41,38 +42,62 @@ body{
     background-image: url('./assets/img/hero-bg.jpg');
     background-position: center -90px;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     position: relative;
-    height: 910px;
+    height: 820px;
     padding: 0;
-    margin-bottom: -90px;
+    /* margin-bottom: -90px; */
 } 
 
 .nav {
     margin-left: auto;
-    padding: 0 11px;
 }
 
 .nav-list {
     display: flex;
     align-items: center;
     list-style: none;
+    line-height: 50px;
 }
 
-.nav-link {
-    padding: 0 15px;
-    line-height: 50px;
-    text-decoration: none;
+.nav-item {
+    padding-right: 31px;
+}
+
+.language {
+    display: flex;
+    width: 72px;
+    justify-content: space-between;
+    font-weight: bold;
 }
 
 .lang {
-    padding-left: 4px;
-    font-weight: 600;
+    cursor: pointer;
+}
+
+.lang:hover {
+    color: #bdae82;
+    transition: 0.5s;
+}
+
+.radio-lang  {
+    display: none;
+}
+
+.radio-lang:checked + span {
+    color: #bdae82;
 }
 
 .logo img{
     display: block;
-    margin: 0;
+    transition: 0.5s;
+}
+
+.logo img:hover {
+    filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
+    contrast(87%);
+    transition: 0.5s;
+    cursor: pointer;
 }
 
 .hero-info {
@@ -166,6 +191,12 @@ body{
     background-color: #bdae82
 }
 
+.gold-btn:hover, .black-btn:hover {
+    color: #FFFFFF;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
 .portfolio-btns {
     align-self: center;
     padding-bottom: 60px;
@@ -178,6 +209,12 @@ body{
     font: inherit;
     color: #BDAE82;
     background-color: transparent;
+}
+
+.black-btn:focus {
+    color: black;
+    background-color: #bdae82;
+    outline: none;
 }
 
 .portfolio-items {
@@ -205,6 +242,13 @@ body{
     top: 288px;
     border: none;
     background-color: transparent;
+}
+
+.play:hover {
+    filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
+    contrast(87%);
+    transition: 0.5s;
+    cursor: pointer;
 }
 
 .price-items{
@@ -272,6 +316,7 @@ body{
     padding: 3px 0 3px 18px;
     border: 2px solid #BDAE82;
     font: inherit;
+    color: #BDAE82;
     background: rgba(0, 0, 0, 0.5);
     margin-bottom: 20px;
 }
@@ -312,4 +357,19 @@ textarea.input{
     display: flex;
 }
 
+.social-icon:hover {
+    filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
+    contrast(87%);
+    transition: 0.5s;
+    cursor: pointer;
+}
 
+.link {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.link:hover {
+    color: #BDAE82;
+    transition: 0.5s;
+}
