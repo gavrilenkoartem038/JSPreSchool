@@ -1,0 +1,315 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; 
+}
+
+body{
+    margin: 0;
+    background-color: black;
+    font: 20px/40px Inter, sans-serif;
+    color: #FFFFFF;
+
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 1440px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.header-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: url('./assets/img/hero-bg.jpg');
+    background-repeat: no-repeat;
+    background-position: center 0;
+}  
+
+.section {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 100px;
+}
+
+.hero-container {
+    background-image: url('./assets/img/hero-bg.jpg');
+    background-position: center -90px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: relative;
+    height: 910px;
+    padding: 0;
+    margin-bottom: -90px;
+} 
+
+.nav {
+    margin-left: auto;
+    padding: 0 11px;
+}
+
+.nav-list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+.nav-link {
+    padding: 0 15px;
+    line-height: 50px;
+    text-decoration: none;
+}
+
+.lang {
+    padding-left: 4px;
+    font-weight: 600;
+}
+
+.logo img{
+    display: block;
+    margin: 0;
+}
+
+.hero-info {
+    margin: 60px 80px;
+    width: 500px;
+}
+
+.hero-title {
+    font: bold 60px/120px "Merriweather", serif;
+    margin: 0;
+}
+
+.hero-text {
+    padding: 10px 30px 25px 0;
+    margin: 0;
+    line-height: 40px;
+}
+
+.title-box {
+    width: 50%;
+    align-self: center;
+    text-align: center;
+    background-image: linear-gradient(to top, #000 99px, #bdae82 99px, #bdae82 101px, #000 101px);
+    padding-bottom: 60px;
+}
+
+.section-title {
+    display: inline-block;
+    margin: 0 auto;
+    padding: 0 20px;
+    font: bold 40px/80px "Merriweather", serif;
+    background-color: black;
+    color: #BDAE82;
+}
+
+.skills-items {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-bottom: 10px;
+}
+
+.skills-item {
+    flex-basis: 320px;
+    text-align: center;
+    background-position: center top;
+}
+  
+.skills-item:nth-child(1) {
+    background-image: url('./assets/svg/camera.svg');
+    background-size: 62px 50px;
+    background-repeat: no-repeat;
+}
+
+.skills-item:nth-child(2) {
+    background-image: url('./assets/svg/video.svg');
+    background-size: 60px 50px;
+    background-repeat: no-repeat;
+}
+
+.skills-item:nth-child(3) {
+    background-image: url('./assets/svg/image.svg');
+    background-size: 66px 50px;
+    background-repeat: no-repeat;
+}
+
+.skills-item:nth-child(4) {
+    background-image: url('./assets/svg/mic.svg');
+    background-size: 32px 50px;
+    background-repeat: no-repeat;
+}
+
+.skills-title {
+    margin: 0 auto;
+    padding: 100px 0 20px 0;
+}
+
+.skills-text {
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+    font-size: 18px;
+    line-height: 36px;
+}
+
+.gold-btn {
+    width: 220px;
+    height: 55px;
+    border: 0;
+    font: inherit;
+    background-color: #bdae82
+}
+
+.portfolio-btns {
+    align-self: center;
+    padding-bottom: 60px;
+}
+
+.black-btn {
+    width: 220px;
+    height: 55px;
+    border: 2px solid #BDAE82;
+    font: inherit;
+    color: #BDAE82;
+    background-color: transparent;
+}
+
+.portfolio-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.video-player {
+    height: 705px;
+    background-image: url('./assets/img/video-bg.jpg');
+}
+
+.video-player {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.play {
+    position: absolute;
+    padding: 0;
+    left: 636px;
+    top: 288px;
+    border: none;
+    background-color: transparent;
+}
+
+.price-items{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 100px;
+}
+
+.price-item {
+    width: 450px;
+    border: 3px solid #BDAE82;
+    text-align: center;
+    padding: 40px 0;
+}
+
+.price-title {
+    font: bold 28px/56px "Merriweather", serif;
+    margin: 0;
+}
+
+.price-value {
+    margin: 0;
+    padding: 20px 0;
+    font: bold 24px/48px "Merriweather", serif;
+    color: #BDAE82;
+}
+
+.price-text {
+    padding-bottom: 40px;
+}
+
+.price-text span {
+    display: block;
+    font-size: 18px;
+    line-height: 36px;
+}
+
+.contacts-container {
+    height: 700px;
+    background-image: url('./assets/img/contacts-bg.jpg');
+    background-size: auto 700px;
+    background-position: center center;
+}
+
+.contacts-section {
+    padding-top: 60px;
+    align-self: flex-end;
+}
+
+.contacts-box {
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+}
+
+.contacts-box .section-title {
+    background-color: transparent;
+    padding: 0;
+    padding-bottom: 40px;
+    margin: 0;
+}
+
+.input {
+    box-sizing: border-box;
+    padding: 3px 0 3px 18px;
+    border: 2px solid #BDAE82;
+    font: inherit;
+    background: rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+}
+
+textarea.input{
+    resize: none;
+    padding-bottom: 13px;
+    margin-bottom: 30px;
+}
+
+::placeholder {
+    color: #BDAE82;   
+}
+
+.footer-container {
+    padding: 50px 20px;
+    flex-direction: row;
+    align-items: center;
+    line-height: 50px;
+}
+
+.data, .social-list, .rss{
+    width: 33.33%;
+    display: flex;
+    gap: 20px;
+    text-decoration: none;
+}
+
+.social-list {
+    justify-content: flex-end;
+}
+
+.rss {
+    justify-content: center;
+}
+
+.social-list a {
+    display: flex;
+}
+
+
