@@ -1,1 +1,16 @@
-console.log('1.Вёрстка валидная +10\n 2.Вёрстка семантическая +20\n 3.Вёрстка соответствует макету +48\n 4.Требования к css + 12\n 5.Интерактивность, реализуемая через css +20\n Итого: 110')
+const hamburger = document.querySelector('.hamburger');
+const nav = document.querySelector('.nav');
+hamburger.addEventListener('click', function () {
+    hamburger.classList.toggle('open');
+    nav.classList.toggle('open');
+    document.body.classList.toggle('lock');
+});
+
+nav.addEventListener('click', function (e) {
+    if (e.target.classList.contains('nav-link')) {
+        hamburger.classList.remove('open');
+        nav.classList.remove('open');
+        document.body.classList.remove('lock');
+    }
+});
+
