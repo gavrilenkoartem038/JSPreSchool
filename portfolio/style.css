@@ -16,7 +16,6 @@ body{
 
 body.lock {
     overflow: hidden;
-    
 }
 
 .container {
@@ -449,6 +448,7 @@ textarea.input{
     .nav.open
     {
         right: 0;
+        overflow: scroll;
     }
 
     .nav-list {
@@ -472,7 +472,7 @@ textarea.input{
 
     .language{
         margin-left: auto;
-        width: 90px;
+        width: 102px;
         padding-right: 20px;
     }
 
@@ -611,4 +611,11 @@ textarea.input{
     .contacts-box {
         width: auto;    
     }
+
+    .nav-list {
+        padding-left: 70px;
+        padding-top: 70px;
+        font-size: 24px;
+        line-height: 48px;
+        gap: 16px;
 }
