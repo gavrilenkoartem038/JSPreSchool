@@ -134,7 +134,7 @@ body.lock::before {
     width: 50%;
     align-self: center;
     text-align: center;
-    background-image: linear-gradient(to top, #000 99px, #bdae82 99px, #bdae82 101px, #000 101px);
+    background-image: linear-gradient(to top, transparent 99px, #bdae82 99px, #bdae82 101px, transparent 101px);
     padding-bottom: 60px;
 }
 
@@ -229,6 +229,11 @@ body.lock::before {
     background-color: transparent;
 }
 
+.black-btn.active {
+    color: #000;
+    background-color: #bdae82;
+}
+
 .portfolio-items {
     display: flex;
     flex-wrap: wrap;
@@ -236,7 +241,7 @@ body.lock::before {
     gap: 25px;
 }
 
-.portfolio-items img {
+.portfolio-image {
     max-width: 100%;
 }
 
@@ -318,11 +323,14 @@ body.lock::before {
     width: 450px;
 }
 
-.contacts-box .section-title {
+.contacts-title {
+    display: inline-block;
     background-color: transparent;
     padding: 0;
     padding-bottom: 40px;
     margin: 0;
+    font: bold 40px/80px "Merriweather", serif;
+    color: #BDAE82;
 }
 
 .input {
@@ -510,7 +518,7 @@ textarea.input{
 
     .title-box {
         padding-bottom: 50px;
-        background-image: linear-gradient(to top, #000 89px, #bdae82 89px, #bdae82 91px, #000 91px);
+        background-image: linear-gradient(to top, transparent 89px, #bdae82 89px, #bdae82 91px, transparent 91px);
     }
 
     #skills .title-box {
@@ -573,7 +581,7 @@ textarea.input{
         align-self: center;
     }
 
-    .contacts-box .section-title {
+    .contacts-title {
         margin: 0 auto;
         line-height: 64px;
     }
@@ -628,3 +636,18 @@ textarea.input{
         gap: 16px;
     }
 }
+
+.light-theme {
+    background: #FFFFFF;
+    color: #000;
+}
+
+.light-theme .black-btn {
+    color: #000;
+}
+
+.light-theme .black-btn:hover {
+    color: #fff;
+    background: #bdae82;
+}
+
