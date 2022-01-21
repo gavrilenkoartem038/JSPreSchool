@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1">
     <title>Portfolio</title>
     <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
-    <script src="index.js"></script>
 </head>
 <body>
     <header class="header">
@@ -18,18 +17,24 @@
             </div>
             <nav class="nav">
                 <ul class="nav-list">
-                  <li class="nav-item"><a href="#skills" class="link">Skills</a></li>
-                  <li class="nav-item"><a href="#portfolio" class="link">Portfolio</a></li>
-                  <li class="nav-item"><a href="#video" class="link">Video</a></li>
-                  <li class="nav-item"><a href="#price" class="link">Price</a></li>
-                  <li class="nav-item"><a href="#contacts" class="link">Contacts</a></li>
+                  <li class="nav-item"><a href="#skills" class="link nav-link">Skills</a></li>
+                  <li class="nav-item"><a href="#portfolio" class="link nav-link">Portfolio</a></li>
+                  <li class="nav-item"><a href="#video" class="link nav-link">Video</a></li>
+                  <li class="nav-item"><a href="#price" class="link nav-link">Price</a></li>
+                  <li class="nav-item"><a href="#contacts" class="link nav-link">Contacts</a></li>
                 </ul>
             </nav>
             <div class="language">
-                <label class="lang"><input type="radio" name="lang" id="en" class="radio-lang" checked><span>en</span></label>
+                <label class="lang" id="en-lang"><input type="radio" name="lang" id="en" class="radio-lang" checked><span>en</span></label>
                 <span>/</span>
-                <label class="lang"><input type="radio" name="lang" id="ru" class="radio-lang"><span>ru</span></label>
+                <label class="lang" id="ru-lang"><input type="radio" name="lang" id="ru" class="radio-lang"><span>ru</span></label>
             </div>
+            <div class="hamburger" id="hamburger">
+                <span class="line line1"></span>
+                <span class="line line2"></span>
+                <span class="line line3"></span>
+              </div>
+              <div class="dark"></div>
         </div>
     </header>
     <main class="main">
@@ -167,5 +172,6 @@
             </ul>
         </div>
     </footer>
+    <script src="index.js"></script>
 </body>
 </html>

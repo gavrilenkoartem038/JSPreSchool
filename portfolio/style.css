@@ -11,12 +11,17 @@ body{
     background-color: black;
     font: 20px/40px Inter, sans-serif;
     color: #FFFFFF;
-
+    overflow-x: hidden;
 }
+
+body.lock {
+    overflow: hidden;
+}
+
 .container {
     display: flex;
     flex-direction: column;
-    width: 1440px;
+    max-width: 1440px;
     margin: 0 auto;
     padding: 0 20px;
 }
@@ -26,6 +31,7 @@ body{
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    height: 90px;
     background: url('./assets/img/hero-bg.jpg');
     background-repeat: no-repeat;
     background-position: center 0;
@@ -42,11 +48,9 @@ body{
     background-image: url('./assets/img/hero-bg.jpg');
     background-position: center -90px;
     background-repeat: no-repeat;
-    background-size: cover;
     position: relative;
     height: 820px;
     padding: 0;
-    /* margin-bottom: -90px; */
 } 
 
 .nav {
@@ -56,6 +60,7 @@ body{
 .nav-list {
     display: flex;
     align-items: center;
+    margin: 0;
     list-style: none;
     line-height: 50px;
 }
@@ -135,9 +140,10 @@ body{
 
 .skills-items {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     flex-wrap: wrap;
     padding-bottom: 10px;
+    gap: 40px;
 }
 
 .skills-item {
@@ -198,7 +204,10 @@ body{
 }
 
 .portfolio-btns {
-    align-self: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
     padding-bottom: 60px;
 }
 
@@ -214,26 +223,25 @@ body{
 .portfolio-items {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
     gap: 25px;
 }
 
-.video-player {
-    height: 705px;
-    background-image: url('./assets/img/video-bg.jpg');
+.portfolio-items img {
+    max-width: 100%;
 }
 
 .video-player {
-    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 705px;
+    background-image: url('./assets/img/video-bg.jpg');
+    background-position: 0 -25px;
 }
 
 .play {
-    position: absolute;
     padding: 0;
-    left: 636px;
-    top: 288px;
     border: none;
     background-color: transparent;
 }
@@ -247,7 +255,10 @@ body{
 
 .price-items{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    column-gap: 25px;
+    row-gap: 50px;
     padding-bottom: 100px;
 }
 
@@ -261,8 +272,8 @@ body{
 .price-title {
     font: bold 28px/56px "Merriweather", serif;
     margin: 0;
+    
 }
-
 .price-value {
     margin: 0;
     padding: 20px 0;
@@ -368,4 +379,262 @@ textarea.input{
 .link:hover {
     color: #BDAE82;
     transition: 0.5s;
+}
+
+@media(max-width: 768px) {
+
+    .header-container {
+        padding-right: 64px;
+        padding-left: 60px;
+        background-size: auto 620px;
+        background-position:-5px -30px;
+    }
+    
+    .hero-container{
+        padding-left: 60px;
+        height: 500px;
+        background-size: auto 620px;
+        background-position:-5px -120px;
+    }
+
+    .section {
+        padding-top: 80px;
+    }
+
+    .hero-container .section{
+        padding-top: 78px;
+    }
+
+    .section-title {
+        font-size: 32px;
+        line-height: 80px;
+    }
+
+    .hamburger {
+        z-index: 5;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+    }
+
+    .hamburger.open .line:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.open .line:first-child {
+        transform: translateY(13px) rotate(45deg) scaleX(1.2);
+        height: 2px;
+    }    
+
+    .hamburger.open .line:last-child {
+        transform: translateY(-13px) rotate(-45deg) scaleX(1.2);
+        height: 2px;
+    }    
+
+    .nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 620px;
+        height: 100%;
+        background-color: black;
+        z-index: 4;
+        transition: right 0.6s ease 0s;
+    }
+
+    .nav.open {
+        right: 0;
+        overflow: scroll;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 127px;
+        padding-top: 134px;
+        font-size: 35px;
+        line-height: 73px;
+        gap: 16px;
+    }
+
+    .line {
+        height: 3px;
+        width: 50px;
+        background: #FFFFFF;
+        z-index: 15;
+        margin: 5px 0;
+        transition: all 0.6s ease 0s;;
+    }
+
+    .language{
+        margin-left: auto;
+        width: 102px;
+        padding-right: 20px;
+    }
+
+    #ru-lang {
+        padding-left: 18px;
+    } 
+
+    #en-lang {
+        padding-right: 9px;
+    } 
+
+    .dark {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 3;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    .nav.open ~ .dark {
+        visibility: visible;
+        opacity: 1;
+        transition: all 0.5s;
+    }    
+
+    .hero-info {
+        width: 420px;
+        margin: 0;
+    }
+
+    .hero-title {
+        font: normal 32px/64px "Merriweather", serif;
+    }
+
+    .hero-text{
+        line-height: 1.21em;
+        padding: 0;
+        padding-top: 20px;
+        padding-bottom: 60px;
+    }
+
+    .title-box {
+        padding-bottom: 50px;
+        background-image: linear-gradient(to top, #000 89px, #bdae82 89px, #bdae82 91px, #000 91px);
+    }
+
+    #skills .title-box {
+        padding-bottom: 45px;
+        background-image: linear-gradient(to top, #000 84px, #bdae82 84px, #bdae82 86px, #000 86px);
+    }
+
+    .skills-items {
+        column-gap: 0;
+        row-gap: 76px;
+        padding-bottom: 80px;
+    }
+
+    .skills-title {
+        padding-top: 80px;
+    }
+
+    .skills-text {
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    .portfolio-btns {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .video-player {
+        height: 418px;
+        margin: 0 -20px;
+        background-size: auto 438px;
+        background-position: 0 -9px;
+    }
+
+    .play img{
+        width: 64.62px;
+        height: 64.69px;
+    }
+
+    .price-item {
+        width: 420px;
+    }
+
+    .price-items {
+        padding-bottom: 80px;
+    }
+
+    .contacts-container {
+        height: 600px;
+        background-size: auto 600px;
+    }
+
+    .contacts-section {
+        align-self: center;
+        align-items: center;
+        padding-top: 60px;
+    }
+
+    .contacts-box .gold-btn {
+        align-self: center;
+    }
+
+    .contacts-box .section-title {
+        margin: 0 auto;
+        line-height: 64px;
+    }
+
+    .footer-container {
+        flex-direction: column ;
+        padding: 0;
+        padding-top: 20px;
+        padding-bottom: 40px;
+        line-height: 40px;
+    }
+
+    .data, .social-list, .rss {
+        padding: 0;
+        justify-content: center;
+        width: auto;
+    }
+
+    .social-list {
+        padding-top: 20px;
+    }
+}
+
+@media(max-width: 620px) { 
+    .nav {
+        width: 100%;
+    }
+}
+
+@media(max-width: 480px) { 
+    .header-container {
+        padding: 0 20px;
+    }
+
+    .hero-container {
+        padding-left: 20px;
+    }
+
+    .hero-info {
+        width: auto;
+    }
+
+    .contacts-box {
+        width: auto;    
+    }
+
+    .nav-list {
+        padding-left: 70px;
+        padding-top: 70px;
+        font-size: 24px;
+        line-height: 48px;
+        gap: 16px;
+    }
 }
