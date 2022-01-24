@@ -98,6 +98,16 @@ nav.addEventListener('click', function (e) {
     }
 });
 
+const seasons = ['winter', 'spring', 'summer', 'autumn'];
+
+seasons.forEach(function preloadSummerImages(elem) {
+  for(let i = 1; i <= 6; i++) {
+    const img = new Image();
+    img.src = `./assets/img/${elem}/${i}.jpg`;
+    console.log(img)
+  }
+})
+
 const portfolioBtns = document.querySelector('.portfolio-btns')
 const portfolioImages = document.querySelectorAll('.portfolio-image')
 const portfolioBtn = document.querySelectorAll('.black-btn')
@@ -123,9 +133,7 @@ lang.addEventListener('click',  getTranslate)
 
 function getLightTheme() {
     const body = document.querySelectorAll('#portfolio, #skills, #video, #price, .section-title')
-    console.log(body)
     body.forEach(element => element.classList.add('light-theme')); 
-    console.log(body)
 } 
 
 getLightTheme()
