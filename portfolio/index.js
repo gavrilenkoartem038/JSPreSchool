@@ -104,7 +104,6 @@ seasons.forEach(function preloadSummerImages(elem) {
   for(let i = 1; i <= 6; i++) {
     const img = new Image();
     img.src = `./assets/img/${elem}/${i}.jpg`;
-    console.log(img)
   }
 })
 
@@ -113,27 +112,30 @@ const portfolioImages = document.querySelectorAll('.portfolio-image')
 const portfolioBtn = document.querySelectorAll('.black-btn')
 
 function changeImage(event) {
-    if(event.target.classList.contains('black-btn')) {
-        portfolioImages.forEach((elem, index) => elem.src = `./assets/img/${event.target.dataset.i18}/${index + 1}.jpg`)
-        portfolioBtn.forEach(elem => elem.classList.remove('active'))
-        event.target.classList.toggle('active');
-    }
+  if(event.target.classList.contains('black-btn')) {
+    portfolioImages.forEach((elem, index) => elem.src = `./assets/img/${event.target.dataset.i18}/${index + 1}.jpg`)
+    portfolioBtn.forEach(elem => elem.classList.remove('active'))
+    event.target.classList.toggle('active');
   }
+}
 
 portfolioBtns.addEventListener('click',  changeImage)
 
 const lang = document.querySelector('.language')
 
 function getTranslate(event) {
-    const text = document.querySelectorAll('[data-i18]')
-    text.forEach(elem => elem.textContent = i18Obj[event.target.textContent][elem.dataset.i18])
+  const text = document.querySelectorAll('[data-i18]')
+  console.log(event.target)
+  text.forEach(elem => elem.textContent = i18Obj[event.target.id][elem.dataset.i18])
 }
 
 lang.addEventListener('click',  getTranslate)
 
-function getLightTheme() {
-    const body = document.querySelectorAll('#portfolio, #skills, #video, #price, .section-title')
-    body.forEach(element => element.classList.add('light-theme')); 
+function getLightTheme(e) {
+  const body = document.querySelectorAll('.main-container, .section-title, .title-box, .nav, .line')
+  body.forEach(element => element.classList.toggle('light-theme')); 
+  e.target.classList.toggle('moon')
 } 
 
-getLightTheme()
+const theme = document.querySelector('.theme')
+theme.addEventListener('click',  getLightTheme)

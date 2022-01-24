@@ -93,6 +93,27 @@ body.lock {
     color: #bdae82;
 }
 
+.theme {
+    background-position: center;
+    background-image: url('./assets/svg/moon.svg');
+    background-repeat: no-repeat;
+    margin-left: 28px;
+    margin-right: 2px;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+}
+
+.theme.moon {
+    background-image: url('./assets/svg/sun.svg');
+}
+
+.theme:hover {
+    filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
+    contrast(87%);
+    transition: 0.5s;
+}
+
 .logo img{
     display: block;
     transition: 0.5s;
@@ -442,6 +463,10 @@ textarea.input{
         height: 2px;
     }    
 
+    .hamburger.open .line.light-theme {
+        background-color: #000;    
+    }
+
     .nav {
         position: fixed;
         top: 0;
@@ -479,17 +504,8 @@ textarea.input{
 
     .language{
         margin-left: auto;
-        width: 102px;
-        padding-right: 20px;
+
     }
-
-    #ru-lang {
-        padding-left: 18px;
-    } 
-
-    #en-lang {
-        padding-right: 9px;
-    } 
 
     .dark {
         display: block;
@@ -509,6 +525,18 @@ textarea.input{
         opacity: 1;
         transition: all 0.5s;
     }    
+
+    .theme {
+        margin-right: 30px;
+    }
+
+    .nav.light-theme {
+        background: #fff;
+    }
+
+    .light-theme .nav-link {
+        color: #000;
+    }
 
     .hero-info {
         width: 420px;
@@ -647,9 +675,20 @@ textarea.input{
     }
 }
 
-.light-theme {
+.main-container, .section-title {
+    transition: 0.5s;
+}
+
+.light-theme.main-container, .light-theme.section-title {
     background: #FFFFFF;
     color: #000;
+    transition: ease 0.5s;
+}
+
+
+
+.title-box.light-theme {
+    background-image: linear-gradient(to top, transparent 99px, #000 99px, #000 101px, transparent 101px);
 }
 
 .light-theme .black-btn {
