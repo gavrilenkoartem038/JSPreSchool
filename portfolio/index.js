@@ -37,7 +37,10 @@ const i18Obj = {
       'price-description-3-span-5': 'Make up, visage, hairstyle',
       'order': 'Order shooting',
       'contact-me': 'Contact me',
-      'send-message': 'Send message'
+      'send-message': 'Send message',
+      'email' : 'E-mail',
+      'phone' : 'Phone',
+      'message' : 'Message'
     },
     'ru': {
       'skills': 'Навыки',
@@ -77,7 +80,10 @@ const i18Obj = {
       'price-description-3-span-5': 'Макияж, визаж, прическа',
       'order': 'Заказать съемку',
       'contact-me': 'Свяжитесь со мной',
-      'send-message': 'Отправить'
+      'send-message': 'Отправить',
+      'email' : 'Почта',
+      'phone' : 'Телефон',
+      'message' : 'Сообщение'
     }
   }
 
@@ -113,7 +119,10 @@ const portfolioBtn = document.querySelectorAll('.black-btn')
 
 function changeImage(event) {
   if(event.target.classList.contains('black-btn')) {
-    portfolioImages.forEach((elem, index) => elem.src = `./assets/img/${event.target.dataset.i18}/${index + 1}.jpg`)
+    portfolioImages.forEach(img => img.classList.add('slowChanges'));
+    setTimeout(() => portfolioImages.forEach(img => img.classList.remove('slowChanges')), 1000); 
+    setTimeout(() => portfolioImages.forEach((elem, index) => elem.src = `./assets/img/${event.target.dataset.i18}/${index + 1}.jpg`), 500); 
+    
     portfolioBtn.forEach(elem => elem.classList.remove('active'))
     event.target.classList.toggle('active');
   }
@@ -121,21 +130,52 @@ function changeImage(event) {
 
 portfolioBtns.addEventListener('click',  changeImage)
 
-const lang = document.querySelector('.language')
+const language = document.querySelector('.language')
+const themeChanger = document.querySelector('.theme')
+let lang = 'en'
+let theme = 0
 
-function getTranslate(event) {
+
+function getTranslate(lang) {
   const text = document.querySelectorAll('[data-i18]')
-  console.log(event.target)
-  text.forEach(elem => elem.textContent = i18Obj[event.target.id][elem.dataset.i18])
-}
-
-lang.addEventListener('click',  getTranslate)
-
-function getLightTheme(e) {
-  const body = document.querySelectorAll('.main-container, .section-title, .title-box, .nav, .line')
-  body.forEach(element => element.classList.toggle('light-theme')); 
-  e.target.classList.toggle('moon')
+  text.forEach(elem => elem.classList.add('slowChanges'));
+  setTimeout(() => text.forEach(elem => elem.classList.remove('slowChanges')), 1000); 
+  setTimeout(() => text.forEach(elem => elem.textContent = i18Obj[lang][elem.dataset.i18]), 500); 
+  const placeholder = document.querySelectorAll('[placeholder]')
+  placeholder.forEach(elem => elem.placeholder = i18Obj[lang][elem.dataset.i18])
+  document.querySelectorAll('.lang').forEach(n => n.classList.remove('checked'));
+  for (let tag of language.children) {
+    if (tag.id == lang) tag.classList.toggle('checked')
+  }
 } 
 
-const theme = document.querySelector('.theme')
-theme.addEventListener('click',  getLightTheme)
+function getLightTheme() {
+    const body = document.querySelectorAll('.main-container, .section-title, .title-box, .nav, .line')
+    body.forEach(element => element.classList.toggle('light-theme')); 
+    themeChanger.classList.toggle('sun')
+} 
+
+language.addEventListener('click',  e => {
+    lang = e.target.id; 
+    getTranslate(lang)
+    localStorage.setItem('lang', lang);
+    console.log(lang)
+})
+
+
+
+themeChanger.addEventListener('click', e => {    
+    getLightTheme()
+    e.target.classList.contains('sun') ? theme = 1 : theme = 0
+    localStorage.setItem('theme', theme);
+})
+
+function getLocalStorage() {
+    if(localStorage.getItem('lang')) {
+        const lang = localStorage.getItem('lang');
+        getTranslate(lang);
+    } 
+    let theme = localStorage.getItem('theme')
+        if (theme == 1) getLightTheme()
+}
+window.addEventListener('load', getLocalStorage)
