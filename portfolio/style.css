@@ -222,11 +222,13 @@ body.lock {
 }
 
 .gold-btn {
+    position: relative;
     width: 220px;
     height: 55px;
     border: 0;
     font: inherit;
-    background-color: #bdae82
+    background-color: #bdae82;
+    overflow: hidden;
 }
 
 .gold-btn:hover, .black-btn:hover {
@@ -244,6 +246,7 @@ body.lock {
 }
 
 .black-btn {
+    position: relative;
     width: 220px;
     height: 55px;
     border: 2px solid #BDAE82;
@@ -251,6 +254,33 @@ body.lock {
     color: #BDAE82;
     background-color: transparent;
     transition: all 0.5s;
+    overflow: hidden;
+}
+
+.black-btn .circle, .gold-btn .circle {
+    position: absolute;
+    background-color: #fff;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: scale 0.5s ease-out;
+}
+
+.black-btn::before, .gold-btn::before {
+    content: '';
+    position: absolute;
+    right: 250px;
+    top: 0px;
+    width: 10px;
+    height: 60px;
+    transform: skewX(-45deg);
+    background: linear-gradient(90deg, rgba(255, 255, 255, .1), rgba(255, 255, 255, .5));;
+    transition: 0.5s ease;
+}
+
+.black-btn:hover:before, .gold-btn:hover:before {
+  right: -50px;
 }
 
 .black-btn.active {
@@ -732,3 +762,9 @@ textarea.input{
     100% { opacity: 1 }
 }
 
+@keyframes scale {
+    to {
+      transform: translate(-50%, -50%) scale(3);
+      opacity: 0;
+    }
+  }

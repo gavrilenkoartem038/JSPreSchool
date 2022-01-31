@@ -142,7 +142,10 @@ function getTranslate(lang) {
   setTimeout(() => text.forEach(elem => elem.classList.remove('slowChanges')), 1000); 
   setTimeout(() => text.forEach(elem => elem.textContent = i18Obj[lang][elem.dataset.i18]), 500); 
   const placeholder = document.querySelectorAll('[placeholder]')
-  placeholder.forEach(elem => elem.placeholder = i18Obj[lang][elem.dataset.i18])
+  setTimeout(() => placeholder.forEach(elem => {
+    elem.placeholder = i18Obj[lang][elem.dataset.i18];
+    elem.textContent = '';
+  }), 500)
   document.querySelectorAll('.lang').forEach(n => n.classList.remove('checked'));
   for (let tag of language.children) {
     if (tag.id == lang) tag.classList.toggle('checked')
@@ -179,3 +182,21 @@ function getLocalStorage() {
         if (theme == 1) getLightTheme()
 }
 window.addEventListener('load', getLocalStorage)
+
+
+const button = document.querySelectorAll('.black-btn, .gold-btn')
+console.log(button)
+
+button.forEach(elem => elem.addEventListener('click', function (e) {
+  const x = e.offsetX
+  const y = e.offsetY
+
+  const circle = document.createElement('span')
+  circle.classList.add('circle')
+  circle.style.top = y + 'px'
+  circle.style.left = x + 'px'
+
+  this.appendChild(circle)
+
+ setTimeout(() => circle.remove(), 500)
+}))
