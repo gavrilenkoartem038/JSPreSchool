@@ -1,3 +1,5 @@
+console.log('1.Смена изображений в секции portfolio +25\n2.Перевод страницы на два языка +25\n3.Переключение светлой и тёмной темы +25\nДополнительный функционал: выбранный пользователем язык отображения страницы и светлая или тёмная тема сохраняются при перезагрузке страницы +5\nДополнительный функционал: сложные эффекты для кнопок при наведении и/или клике +5\n Итого: 85 баллов')
+
 const i18Obj = {
     'en': {
       'skills': 'Skills',
@@ -138,6 +140,9 @@ let theme = 0
 
 function getTranslate(lang) {
   const text = document.querySelectorAll('[data-i18]')
+  const box = document.querySelectorAll('.title-box')
+  box.forEach(elem => elem.classList.add('slowChanges'));
+  setTimeout(() => box.forEach(elem => elem.classList.remove('slowChanges')), 1000); 
   text.forEach(elem => elem.classList.add('slowChanges'));
   setTimeout(() => text.forEach(elem => elem.classList.remove('slowChanges')), 1000); 
   setTimeout(() => text.forEach(elem => elem.textContent = i18Obj[lang][elem.dataset.i18]), 500); 
@@ -162,7 +167,6 @@ language.addEventListener('click',  e => {
     lang = e.target.id; 
     getTranslate(lang)
     localStorage.setItem('lang', lang);
-    console.log(lang)
 })
 
 
@@ -185,7 +189,6 @@ window.addEventListener('load', getLocalStorage)
 
 
 const button = document.querySelectorAll('.black-btn, .gold-btn')
-console.log(button)
 
 button.forEach(elem => elem.addEventListener('click', function (e) {
   const x = e.offsetX
