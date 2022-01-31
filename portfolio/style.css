@@ -724,6 +724,12 @@ textarea.input{
     }
 }
 
+@media(max-width: 620px) { 
+    .nav {
+        width: 100%;
+    }
+}
+
 @media(max-width: 680px) { 
     .skills-item:nth-child(2n)  {
         right: 0;
