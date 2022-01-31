@@ -53,6 +53,16 @@ body.lock {
     padding: 0;
 } 
 
+.main-container, .section-title {
+    transition: 0.5s;
+}
+
+.light-theme.main-container, .light-theme.section-title {
+    background: #FFFFFF;
+    color: #000;
+    transition: ease 0.5s;
+}
+
 .nav {
     margin-left: auto;
 }
@@ -78,6 +88,7 @@ body.lock {
 
 .lang {
     cursor: pointer;
+    transition: 0.5s;
 }
 
 .lang:hover {
@@ -85,12 +96,29 @@ body.lock {
     transition: 0.5s;
 }
 
-.radio-lang  {
-    display: none;
+.lang.checked {
+    color: #bdae82;
 }
 
-.radio-lang:checked + span {
-    color: #bdae82;
+.theme {
+    background-position: center;
+    background-image: url('./assets/svg/moon.svg');
+    background-repeat: no-repeat;
+    margin-left: 28px;
+    margin-right: 2px;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+}
+
+.theme.sun {
+    background-image: url('./assets/svg/sun.svg');
+}
+
+.theme:hover {
+    filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
+    contrast(87%);
+    transition: 0.5s;
 }
 
 .logo img{
@@ -125,8 +153,12 @@ body.lock {
     width: 50%;
     align-self: center;
     text-align: center;
-    background-image: linear-gradient(to top, #000 99px, #bdae82 99px, #bdae82 101px, #000 101px);
+    background-image: linear-gradient(to top, transparent 99px, #bdae82 99px, #bdae82 101px, transparent 101px);
     padding-bottom: 60px;
+}
+
+.title-box.light-theme {
+    background-image: linear-gradient(to top, transparent 99px, #000 99px, #000 101px, transparent 101px);
 }
 
 .section-title {
@@ -190,11 +222,13 @@ body.lock {
 }
 
 .gold-btn {
+    position: relative;
     width: 220px;
     height: 55px;
     border: 0;
     font: inherit;
-    background-color: #bdae82
+    background-color: #bdae82;
+    overflow: hidden;
 }
 
 .gold-btn:hover, .black-btn:hover {
@@ -212,12 +246,59 @@ body.lock {
 }
 
 .black-btn {
+    position: relative;
     width: 220px;
     height: 55px;
     border: 2px solid #BDAE82;
     font: inherit;
     color: #BDAE82;
     background-color: transparent;
+    transition: all 0.5s;
+    overflow: hidden;
+}
+
+.black-btn .circle, .gold-btn .circle {
+    position: absolute;
+    background-color: #fff;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: scale 0.5s ease-out;
+}
+
+.black-btn::before, .gold-btn::before {
+    content: '';
+    position: absolute;
+    right: 250px;
+    top: 0px;
+    width: 10px;
+    height: 60px;
+    transform: skewX(-45deg);
+    background: linear-gradient(90deg, rgba(255, 255, 255, .1), rgba(255, 255, 255, .5));;
+    transition: 0.5s ease;
+}
+
+.black-btn:hover:before, .gold-btn:hover:before {
+  right: -50px;
+}
+
+.black-btn.active {
+    color: #000;
+    background-color: #bdae82;
+}
+
+.light-theme .black-btn.active {
+    color: #fff;
+}
+
+.light-theme .black-btn {
+    color: #000;
+}
+
+.light-theme .black-btn:hover {
+    color: #fff;
+    background: #bdae82;
 }
 
 .portfolio-items {
@@ -227,8 +308,12 @@ body.lock {
     gap: 25px;
 }
 
-.portfolio-items img {
+.portfolio-image {
     max-width: 100%;
+}
+
+.slowChanges {
+    animation: fade 1000ms linear 1;
 }
 
 .video-player {
@@ -309,11 +394,14 @@ body.lock {
     width: 450px;
 }
 
-.contacts-box .section-title {
+.contacts-title {
+    display: inline-block;
     background-color: transparent;
     padding: 0;
     padding-bottom: 40px;
     margin: 0;
+    font: bold 40px/80px "Merriweather", serif;
+    color: #BDAE82;
 }
 
 .input {
@@ -420,6 +508,11 @@ textarea.input{
         cursor: pointer;
     }
 
+    .hamburger:hover .line{
+        background-color: #bdae82;
+        transition: all 0.5S;
+    }
+
     .hamburger.open .line:nth-child(2) {
         opacity: 0;
     }
@@ -433,6 +526,14 @@ textarea.input{
         transform: translateY(-13px) rotate(-45deg) scaleX(1.2);
         height: 2px;
     }    
+
+    .hamburger.open .line.light-theme {
+        background-color: #000;    
+    }
+
+    .hamburger.open:hover .line.light-theme {
+        background-color: #bdae82;    
+    }
 
     .nav {
         position: fixed;
@@ -471,17 +572,38 @@ textarea.input{
 
     .language{
         margin-left: auto;
-        width: 102px;
-        padding-right: 20px;
     }
 
-    #ru-lang {
-        padding-left: 18px;
-    } 
+    .dark {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 3;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        visibility: hidden;
+        opacity: 0;
+    }
 
-    #en-lang {
-        padding-right: 9px;
-    } 
+    .nav.open ~ .dark {
+        visibility: visible;
+        opacity: 1;
+        transition: all 0.5s;
+    }    
+
+    .theme {
+        margin-right: 30px;
+    }
+
+    .nav.light-theme {
+        background: #fff;
+    }
+
+    .light-theme .nav-link {
+        color: #000;
+    }
 
     .dark {
         display: block;
@@ -520,18 +642,31 @@ textarea.input{
 
     .title-box {
         padding-bottom: 50px;
-        background-image: linear-gradient(to top, #000 89px, #bdae82 89px, #bdae82 91px, #000 91px);
+        background-image: linear-gradient(to top, transparent 89px, #bdae82 89px, #bdae82 91px, transparent 91px);
+    }
+
+    .title-box.light-theme {
+        background-image: linear-gradient(to top, transparent 89px, #000 89px, #000 91px, transparent 91px);
     }
 
     #skills .title-box {
         padding-bottom: 45px;
-        background-image: linear-gradient(to top, #000 84px, #bdae82 84px, #bdae82 86px, #000 86px);
+        background-image: linear-gradient(to top, transparent 84px, #bdae82 84px, #bdae82 86px, transparent 86px);
+    }
+
+    #skills .title-box.light-theme {
+        background-image: linear-gradient(to top, transparent 84px, #000 84px, #000 86px, transparent 86px);
     }
 
     .skills-items {
         column-gap: 0;
         row-gap: 76px;
         padding-bottom: 80px;
+    }
+
+    .skills-item:nth-child(2n)  {
+        position: relative;
+        right: 5px;
     }
 
     .skills-title {
@@ -583,8 +718,9 @@ textarea.input{
         align-self: center;
     }
 
-    .contacts-box .section-title {
+    .contacts-title {
         margin: 0 auto;
+        font-size: 32px;
         line-height: 64px;
     }
 
@@ -607,9 +743,9 @@ textarea.input{
     }
 }
 
-@media(max-width: 620px) { 
-    .nav {
-        width: 100%;
+@media(max-width: 680px) { 
+    .skills-item:nth-child(2n)  {
+        right: 0;
     }
 }
 
@@ -638,3 +774,16 @@ textarea.input{
         gap: 16px;
     }
 }
+
+@keyframes fade {
+    0% { opacity: 1 }
+    50% { opacity: 0 }
+    100% { opacity: 1 }
+}
+
+@keyframes scale {
+    to {
+      transform: translate(-50%, -50%) scale(3);
+      opacity: 0;
+    }
+  }
