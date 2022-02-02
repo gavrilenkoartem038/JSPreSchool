@@ -12,6 +12,7 @@ const speed = document.querySelector('.speed')
 const speedValue = document.querySelector('.speed-value')
 const speedIcon = document.querySelector('.speed-icon')
 const skipIcons = document.querySelectorAll('[data-skip]')
+const controls = document.querySelector('.controls')
 
 function togglePlay() {
     const method = video.paused ? 'play' : 'pause';
@@ -55,9 +56,11 @@ function updateProgress () {
     progress.style.background = `linear-gradient(to right, #bdae82 0%, #bdae82 ${time}%, rgba(0, 0, 0, 0.5) ${time}%, rgba(0, 0, 0, 0.5) 100%)`
 }
 
-function scrab(e) {
-    const scrabTime = (e.offsetX / progress.offsetWidth) * video.duration
-    video.currentTime = scrabTime;
+function scrub(e) {
+    const scrubTime = (e.offsetX / progress.offsetWidth) * video.duration
+    console.log(e)
+    video.currentTime = scrubTime;
+    
 }
 
 function speedChange () {
@@ -91,7 +94,7 @@ playBtn.addEventListener('click', togglePlay);
 volumeIcon.addEventListener('click', muteVolume);
 volume.addEventListener('change', updateVolume)
 volume.addEventListener('mousemove', updateVolume)
-progress.addEventListener('click', scrab)
+progress.addEventListener('click', scrub)
 progress.addEventListener('mousemove', (e) => mousedown && scrab(e));
 progress.addEventListener('mousedown', () => mousedown = true);
 progress.addEventListener('mouseup', () => mousedown = false);
