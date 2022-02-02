@@ -17,6 +17,20 @@ body{
     padding: 0 20px;
 }
 
+.player-container {
+    position: relative;
+    overflow: hidden;
+    justify-content: center;
+}
+
+.player-container:fullscreen {
+    padding: 0;
+}
+
+.player-container:fullscreen .controls {
+    width: 100%;
+}
+
 .title-box {
     width: 50%;
     align-self: center;
@@ -31,7 +45,7 @@ body{
     padding: 0 20px;
     font: bold 40px/80px "Merriweather", serif;
     background-color: black;
-    color: #BDAE82;
+    color: #bdae82;
 }
 
 .video-player {
@@ -40,17 +54,31 @@ body{
     justify-content: center;
 }
 
+.background {
+    background-image: url(./assets/video-bg.jpg);
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 1;
+    background-size: cover;
+    margin: 0 20px;
+    background-position: center;
+    transition: 1s;
+}
+
 .video {
     width: 100%;
 }
 
 .play-btn {
     position: absolute;
-    width: 100px;
-    height: 100px;
+    width: 10%;
     padding: 0;
     border: none;
     background-color: transparent;
+    z-index: 2;
 }
 
 .play-btn.none {
@@ -65,20 +93,107 @@ body{
 }
 
 .controls {
+    position: absolute;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    bottom:0;
+    width: calc(100% - 40px) ;
+    transition:all .5s;
+    flex-wrap:wrap;
+    background:rgba(0,0,0,0.3);
+    transform: translateY(30px);
+}
+
+.player-container:hover .controls {
+    transform: translateY(0px);
+}
+
+.buttons-container {
     display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-left: 5px;
+}
+
+.ranges-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-right: 5px;
+    font-size: 14px;
+    line-height: 30px;
 }
 
 .progress {
+    width: 100%;
+    margin: 0;
     appearance: none;
-    width: 70%;
+    background: linear-gradient(to right, #bdae82 0%, #bdae82 0%, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%);
+    cursor: pointer;
 }
 
-.play-icon {
+.range {
+    margin: 0;
+    appearance: none;
+    background: linear-gradient(to right, #bdae82 0%, #bdae82 50%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.5) 100%);
+    height: 10px;
+    width: 100px;
+    cursor: pointer;
+}
+
+.progress::-webkit-slider-thumb {
+    display: none;
+}
+
+.range::-webkit-slider-thumb {
+    transform: scale(0.01);
+}
+
+.progress::-webkit-slider-runnable-track {
+    height: 10px;
+}
+
+.icon {
     background-image: url(./assets/svg/play.svg);
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     background-position: center;
     background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.icon:hover {
+    filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
+}
+
+.fullscreen-icon {
+    background-image: url(./assets/svg/fullscreen.svg);
+    transition: 1s;
+
+}
+
+.volume-icon {
+    background-image: url(./assets/svg/volume-on.svg);
+}
+
+.speed-icon {
+    background-image: url(./assets/svg/speed.svg);
+}
+
+.forward-icon {
+    background-image: url(./assets/svg/skip-forward.svg);
+}
+
+.backward-icon {
+    background-image: url(./assets/svg/skip-backward.svg);
+}
+
+.volume-value, .speed-value {
+    min-width: 35px;
+    text-align: center;
 }
 
 .footer-container {
@@ -97,4 +212,34 @@ body{
 .link:hover {
     color: #BDAE82;
     transition: 0.5s;
+}
+
+@media (max-width: 550px) {
+    .section-title {
+        font-size: 32px;
+    }
+
+    .player-container {
+        padding: 0;
+    }
+    
+    .background {
+        margin: 0;
+    }
+
+    .controls {
+        width: 100%;
+    }
+
+    .buttons-container, .ranges-container {
+        gap: 5px;
+    }
+
+    .range {
+        width: 50px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+    }
 }
