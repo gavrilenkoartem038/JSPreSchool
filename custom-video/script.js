@@ -95,9 +95,9 @@ volumeIcon.addEventListener('click', muteVolume);
 volume.addEventListener('change', updateVolume)
 volume.addEventListener('mousemove', updateVolume)
 progress.addEventListener('click', scrub)
-progress.addEventListener('mousemove', (e) => mousedown && scrab(e));
-progress.addEventListener('mousedown', () => mousedown = true);
-progress.addEventListener('mouseup', () => mousedown = false);
+progress.addEventListener('mousemove', (e) => mousedown && scrub(e));
+progress.addEventListener('mousedown', () => {mousedown = true; console.log(mousedown)});
+progress.addEventListener('mouseup', () => {mousedown = false; console.log(mousedown)});
 speed.addEventListener('change', speedChange)
 speed.addEventListener('mousemove', speedChange)
 speedIcon.addEventListener('click', normalizeSpeed);
