@@ -127,11 +127,7 @@ body{
 
 .progress {
     width: 100%;
-    line-height: 7px;
-    margin: 0;
-    appearance: none;
-    background: linear-gradient(to right, #bdae82 0%, #bdae82 0%, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%);
-    cursor: pointer;
+    height: 10px;
 }
 
 .range {
@@ -143,16 +139,8 @@ body{
     cursor: pointer;
 }
 
-.progress::-webkit-slider-thumb {
-    display: none;
-}
-
 .range::-webkit-slider-thumb {
     transform: scale(0.01);
-}
-
-.progress::-webkit-slider-runnable-track {
-    height: 0;
 }
 
 .icon {
