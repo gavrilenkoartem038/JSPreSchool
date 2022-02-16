@@ -1,6 +1,17 @@
 body {
-    margin: 0;
-    font: 32px/64px Verdana;
+    font: 16px/32px 'Exo';
+}
+
+header {
+    padding-left: 20px;
+    background-color: #497628;
+    display: flex;
+    align-items: center;
+    gap: 155px;
+}
+
+main {
+    padding-top: 15px;
 }
 
 .game {
@@ -10,7 +21,7 @@ body {
     right: 0;
     margin: 0 auto;
     display: block;
-    
+    transition: 0.5s;
 }
 
 .game.active {
@@ -28,6 +39,7 @@ body {
     height: 608px;
     text-align: center;
     background-color: #568b31;
+    transition: 0.5s;
 }
 
 .container.hidden {
@@ -35,14 +47,48 @@ body {
     opacity: 0;
 }
 
+.snake-img {
+    height: 50px;
+}
+
+.title {
+    font: 32px/64px 'Exo';
+}
+
+.scores-box {
+    margin: 0 20px;
+}
+
+.score {
+    display: flex;
+    height: 32px;
+    gap: 10px;
+}
+
+.score:nth-child(2n) {
+   background-color: #abd850; 
+}
+
+.score:nth-child(2n+1) {
+   background-color: #a3d247; 
+}
+
+.position {
+    width: 60px;
+    border-right: 3px solid #497628;
+}
+
 .end-game {
     position: absolute;
-    top: 200px;
+    top: 250px;
     left: 0;
     right: 0;
     margin: 0 auto;
-    width: 608px;
+    padding: 30px 0;
+    width: 578px;
+    border-radius: 20px;
     text-align: center;
+    background-color: rgba(0, 50, 0, 0.5);
     opacity: 0;
     visibility: hidden;
     transition: 0.5s;
@@ -53,6 +99,15 @@ body {
     opacity: 1;
 }
 
+button {
+    background-color: whitesmoke;
+    border: none;
+    width: 120px;
+    height: 32px;
+    border-radius: 5px;
+    font: 16px/32px 'Exo';
+}
+
 .level-btn.active {
-    background-color: aqua;
+    background-color: #abd850;
 }

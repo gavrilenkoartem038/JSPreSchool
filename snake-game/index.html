@@ -6,32 +6,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snake</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Exo&display=swap" rel="stylesheet">
 </head>
 <body>
     <canvas class="game" width="608" height="608"></canvas>
     <div class="container">
         <header>
-            <div>Snake!</div>
+            <img class="snake-img" src="./assets/snake.png" alt="">
+            <div class="title">Snake!</div>
         </header>
         <main>
             <audio src="./assets/eat.mp3" class="audio"></audio>
             <div class="menu-contaimer">
                 <button class="play">Play</button>
                 <div class="level">
-                    <div>Level</div>
+                    <div class="title">Level</div>
                     <div class="btn-container">
                         <button data-points ="1" data-interval="300" class="level-btn active">Low</button>
                         <button data-points ="2" data-interval="150" class="level-btn">Medium</button>
                         <button data-points ="3" data-interval="100" class="level-btn">High</button>
                     </div>
                 </div>
-                <div class="scores-box">Top scores</div>
+                <div class="title">Top scores</div>
+                <div class="scores-box">
+                    <div class="score">
+                        <div class="position">
+                            <img src="./assets/1.png" alt="icon">
+                        </div>
+                        <div></div>
+                    </div>
+                    <div class="score">
+                        <div class="position">
+                            <img src="./assets/2.png" alt="icon">
+                        </div>
+                        <div></div>
+                    </div>
+                    <div class="score">
+                        <div class="position">
+                            <img src="./assets/3.png" alt="icon">
+                        </div>
+                        <div></div>
+                    </div>
+                    <div class="score">
+                        <div class="position">4</div>
+                        <div></div>
+                    </div>
+                    <div class="score">
+                        <div class="position">5</div>
+                        <div></div>
+                    </div>
+                    <div class="score">
+                        <div class="position">6</div>
+                        <div></div>
+                    </div>
+                    <div class="score">
+                        <div class="position">7</div>
+                        <div></div>
+                    </div>
+                    <div class="score">
+                        <div class="position">8</div>
+                        <div></div>
+                    </div>
+                    <div class="score">
+                        <div class="position">9</div>
+                        <div></div>
+                    </div>
+                    <div class="score">
+                        <div class="position">10</div>
+                        <div></div>
+                    </div>
+                </div>
             </div>
         </main>
         <footer></footer>
     </div>
     <div class="end-game">
-        <div>Your score</div>
+        <div class="title"></div>
         <button class="try-again">Try again</button>
         <button class="menu-back">Back to menu</button>
     </div>

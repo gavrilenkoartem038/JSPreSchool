@@ -7,6 +7,7 @@ ground.src = 'assets/ground.png'
 const foodImg = new Image()
 foodImg.src = 'assets/prawn.png'
 
+const scoreItem = document.querySelectorAll('.score')
 const scoresBox = document.querySelector('.scores-box')
 let box = 32;
 let score = 0;
@@ -56,13 +57,9 @@ function getLocalStorage(arr) {
 }
 
 function writeScores(arr) {
-    while (scoresBox.firstChild) {
-        scoresBox.removeChild(scoresBox.firstChild);
-    }
-    arr.sort((a, b) => b - a).forEach((elem, index) => {
-        const scoreValue = document.createElement('div')
-        scoreValue.textContent = `${index+1} : ${elem}`
-        scoresBox.append(scoreValue)
+    let sortedArr = arr.slice().sort((a, b) => b - a) 
+    sortedArr.forEach((elem, index) => {
+        scoreItem[index].children[1].textContent = `${elem} points`
     })
 }
 
@@ -73,6 +70,7 @@ function setScores () {
     } else {
         scores.shift()
         scores.push(score)
+        console.log(scores)
     }
     setLocalStorage(scores)
     writeScores(scores)
@@ -83,10 +81,13 @@ document.addEventListener('keydown', setDirection)
 let dir
 
 function setDirection(event) {
-    if (event.keyCode == 37 && dir != 'right') dir = 'left'
+    if (canvas.classList.contains('active')){
+        if (event.keyCode == 37 && dir != 'right') dir = 'left'
     else if (event.keyCode == 38 && dir != 'down') dir = 'up'
     else if (event.keyCode == 39 && dir != 'left') dir = 'right'
     else if (event.keyCode == 40 && dir != 'up') dir = 'down'
+    }
+    
 }
 
 const gameEnd = document.querySelector('.end-game')
@@ -106,6 +107,7 @@ function endGame (head, arr) {
     if(end == true) {
         clearInterval(game)
         gameEnd.classList.add('active')
+        gameEnd.children[0].textContent = `Your score: ${score} point(s)`
         setScores()
     }
 }
@@ -139,14 +141,14 @@ function drawGame() {
     ctx.drawImage(ground, 0, 0)
     ctx.drawImage(foodImg, food.x, food.y)
 
-    snake.forEach(elem => {
-        ctx.fillStyle = 'green';
+    snake.forEach((elem,index) => {
+        ctx.fillStyle = `rgb(0, ${128 +index*2}, 0)`;
         ctx.fillRect(elem.x + 3, elem.y + 3, box-6, box-6)
     })
 
     ctx.fillStyle = 'white'
-    ctx.font = '50px Arial'
-    ctx.fillText(score, box * 2.5, box * 1.7)
+    ctx.font = '32px Exo'
+    ctx.fillText(score, box * 2.2, box * 1.5)
 }
 
 const audio = document.querySelector('.audio')
