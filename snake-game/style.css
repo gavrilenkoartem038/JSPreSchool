@@ -1,0 +1,147 @@
+body {
+    margin-top: 10px;
+    font: 16px/32px 'Exo';
+}
+
+header {
+    padding-left: 20px;
+    background-color: #497628;
+    display: flex;
+    align-items: center;
+    gap: 155px;
+}
+
+main {
+    padding-top: 15px;
+}
+
+.game {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    display: block;
+    transition: 0.5s;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.game.active {
+    visibility: visible ;
+    opacity: 1;
+}
+
+.container {
+    margin: 0 auto;
+    width: 608px;
+    height: 608px;
+    text-align: center;
+    background-color: #568b31;
+    transition: 0.5s;
+}
+
+.container.hidden {
+    visibility: visible;
+    opacity: 0;
+}
+
+.snake-img {
+    height: 50px;
+}
+
+.title {
+    font: 32px/64px 'Exo';
+}
+
+.scores-box {
+    margin: 0 20px;
+}
+
+.score {
+    display: flex;
+    height: 32px;
+    gap: 10px;
+}
+
+.score:nth-child(2n) {
+   background-color: #abd850; 
+}
+
+.score:nth-child(2n+1) {
+   background-color: #a3d247; 
+}
+
+.position {
+    width: 60px;
+    border-right: 3px solid #497628;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    width: 568px;
+    margin: 0 auto;
+    padding: 5px 20px;
+    background-color: #497628;
+}
+
+.rss {
+    width: 80px;
+}
+
+.data {
+    display: flex;
+    gap: 10px;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+}
+
+.link:hover {
+    color: white;
+    transition: 0.5s;
+}
+
+.end-game {
+    position: absolute;
+    top: 250px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    padding: 30px 0;
+    width: 578px;
+    border-radius: 20px;
+    text-align: center;
+    background-color: rgba(0, 50, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s;
+}
+
+.end-game.active {
+    visibility: visible ;
+    opacity: 1;
+}
+
+button {
+    background-color: whitesmoke;
+    border: none;
+    margin: 0 10px;
+    width: 120px;
+    height: 32px;
+    border-radius: 5px;
+    font: 16px/32px 'Exo';
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #abd850;
+}
+
+.level-btn.active {
+    background-color: #abd850;
+}
