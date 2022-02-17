@@ -1,4 +1,5 @@
 body {
+    margin-top: 10px;
     font: 16px/32px 'Exo';
 }
 
@@ -16,12 +17,14 @@ main {
 
 .game {
     position: absolute;
-    top: 50px;
+    top: 10px;
     left: 0;
     right: 0;
     margin: 0 auto;
     display: block;
     transition: 0.5s;
+    visibility: hidden;
+    opacity: 0;
 }
 
 .game.active {
@@ -30,10 +33,6 @@ main {
 }
 
 .container {
-    position: absolute;
-    top: 50px;
-    left: 0;
-    right: 0;
     margin: 0 auto;
     width: 608px;
     height: 608px;
@@ -78,6 +77,34 @@ main {
     border-right: 3px solid #497628;
 }
 
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    width: 568px;
+    margin: 0 auto;
+    padding: 5px 20px;
+    background-color: #497628;
+}
+
+.rss {
+    width: 80px;
+}
+
+.data {
+    display: flex;
+    gap: 10px;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+}
+
+.link:hover {
+    color: white;
+    transition: 0.5s;
+}
+
 .end-game {
     position: absolute;
     top: 250px;
@@ -102,10 +129,17 @@ main {
 button {
     background-color: whitesmoke;
     border: none;
+    margin: 0 10px;
     width: 120px;
     height: 32px;
     border-radius: 5px;
     font: 16px/32px 'Exo';
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #abd850;
 }
 
 .level-btn.active {

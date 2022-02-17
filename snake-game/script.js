@@ -33,6 +33,7 @@ let interval = 300
 let points = 1
 const btnContainer = document.querySelector('.btn-container')
 const levelBtns = document.querySelectorAll('.level-btn')
+const audioClick = document.querySelector('.audioClick')
 
 function selectLevel(event) {
     if(event.target.classList.contains('level-btn')) {
@@ -40,6 +41,8 @@ function selectLevel(event) {
         event.target.classList.add('active')
         points = parseInt(event.target.dataset.points) 
         interval = event.target.dataset.interval
+        audioClick.load()
+        audioClick.play()
         clearInterval(game)
         game = setInterval(playGame, interval);
     }
@@ -94,6 +97,8 @@ const gameEnd = document.querySelector('.end-game')
 const tryAgain = document.querySelector('.try-again')
 const menuBack = document.querySelector('.menu-back')
 
+const audioEnd = document.querySelector('.audioEnd')
+
 function endGame (head, arr) {
     let end = false
     for(let i = 0; i < arr.length; i++) {
@@ -105,6 +110,7 @@ function endGame (head, arr) {
         end = true
     }
     if(end == true) {
+        audioEnd.play()
         clearInterval(game)
         gameEnd.classList.add('active')
         gameEnd.children[0].textContent = `Your score: ${score} point(s)`
@@ -151,11 +157,11 @@ function drawGame() {
     ctx.fillText(score, box * 2.2, box * 1.5)
 }
 
-const audio = document.querySelector('.audio')
+const audioEat = document.querySelector('.audioEat')
 
 function eatFood () {
     if(snakeX == food.x && snakeY == food.y) {
-        audio.play()
+        audioEat.play()
         score += points
         food = {
             x: Math.floor(Math.random() * 17 + 1) * box,
